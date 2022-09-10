@@ -4,7 +4,7 @@
 class CurrencyConverter
   attr_reader :price
 
-  USD_EXCHANGE_RATES = { #third api used to update exchange rate at regular interval
+  USD_EXCHANGE_RATES = { #used third-party api to update exchange rate at regular interval
     'GBP' => 1.17,
     'EUR' => 1,
     'JOD' => 0.98,
