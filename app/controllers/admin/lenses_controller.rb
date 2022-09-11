@@ -26,7 +26,7 @@ class Admin::LensesController < ApplicationController
   def destroy
     begin
       @lens.destroy!
-      success_success('Successfully deleted') and return
+      send_success('Successfully deleted') and return
     rescue => e
       send_error(e.message) and return
     end

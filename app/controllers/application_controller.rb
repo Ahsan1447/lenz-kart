@@ -8,11 +8,17 @@ class ApplicationController < ActionController::API
     }
   end
 
-  def success_success(message)
+  def send_success(message)
     render json: {
       error: false,
       success: true,
       message: message
     }
+  end
+
+  protected
+
+  def formatted_price(user)
+    { price: CurrencyConverter.new(user.price).send("to_#{user.currency}".to_sym) }
   end
 end
