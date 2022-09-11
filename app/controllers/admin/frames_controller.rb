@@ -1,4 +1,5 @@
 class Admin::FramesController < ApplicationController
+  before_action :authorize_admin! #better to use pundit gem and create policy class
   before_action :find_frame, except: %i[index create]
 
   def index

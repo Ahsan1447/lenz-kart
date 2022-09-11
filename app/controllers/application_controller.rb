@@ -21,4 +21,12 @@ class ApplicationController < ActionController::API
   def formatted_price(user)
     { price: CurrencyConverter.new(user.price).send("to_#{user.currency}".to_sym) }
   end
+
+  def authorize_admin!
+    fail "Your are not authorized"  unless user.admin?
+  end
+
+  def user
+    User.find(params[:user_id])
+  end
 end
