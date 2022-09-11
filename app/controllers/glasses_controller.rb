@@ -6,7 +6,7 @@ class GlassesController < ApplicationController
       glasses = Glasses.create!(user: user, lens: lens, frame: frame)
       frame.decrement!(:stock)
       lens.decrement!(:stock)
-      store_in_cart(glasses)
+      store_in_cart!(glasses)
     end
 
     send_success("Added to cart successfully!")
@@ -16,7 +16,7 @@ class GlassesController < ApplicationController
 
   private
 
-  def store_in_cart(glasses)
+  def store_in_cart!(glasses)
     cart.items.create(glasses: glasses)
   end
 
