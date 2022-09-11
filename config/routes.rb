@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  get 'glasses/add_to_cart'
+
   namespace :admin do
     resources :frames, only: %i[index create update destroy]
     resources :lenses, only: %i[index create update destroy]
@@ -7,4 +7,9 @@ Rails.application.routes.draw do
 
   resources :frames, only: %i[index]
   resources :lenses, only: %i[index]
+  resources :glasses, only: [] do
+    collection do
+      post :add_to_cart
+    end
+  end
 end
